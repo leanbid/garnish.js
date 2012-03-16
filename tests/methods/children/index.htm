@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script language="javascript" src="../../../garnish.js"></script>
+</head>
+<body>
+  
+<span id="test">
+  <span>Test 1</span>
+  <span>Test 2</span>
+  <span>
+    <span>Test 3</span>
+    <span>Test 4</span>
+  </span>
+</span>
+  
+<script language="javascript">
+  var test_el = document.getElementById('test');
+  
+  garnish.wrap(test_el).children(function(){
+    if(this.children().length > 1){
+      alert(this.html());
+    }
+  });
+  
+</script>
+  
+</body>
+</html>

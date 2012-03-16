@@ -1,0 +1,100 @@
+-----------------------------------
+Functions
+-----------------------------------
+
+* is_defined
+* add_initializer(filter, fn)
+
+-----------------------------------
+Element Properties
+-----------------------------------
+
+* shared_vars
+* element
+
+-----------------------------------
+Element Wrapper Methods
+-----------------------------------
+
+Core
+* init
+
+Conditional:
+* is_style
+* is_class
+* is_type
+* is_aframe
+* is_dialog
+* is_named
+* is(condition) - if this is null return false
+
+Traversal:
+* parent
+* (list) children(filter, fn)
+* (list) descendants(filter, fn)
+* (list) ancestors(filter, fn)
+* (list) all_next(filter, fn)
+* (list) all_previous(filter, fn)
+* descendant(filter, offset, fn)
+* ancestor(filter, offset, fn)
+* next(filter, offset, fn)
+* previous(filter, offset, fn)
+* named(name, fn)
+* aframe(filter, offset, fn)
+* dialog(filter, offset, fn)
+
+Manipulation:
+* build
+* build_before
+* build_after
+* remove
+* append
+* set_contents
+* add_class
+* set_style
+
+Attributes
+* index
+* contents
+* style
+* type
+* values
+* value
+
+Events
+* bind
+* emit
+* listen
+
+Ajax / Util
+* xhr
+* init_aframe
+* aframe
+* init_dialog
+* init_aframe_dialog
+
+
+-----------------------------------
+Element Wrapper List Methods
+-----------------------------------
+* offset
+* count
+* first
+* last
+* each
+* filter
+* concat(list)
+* reverse
+
+-----------------------------------
+Methods to get rid of? 
+-----------------------------------
+* set_attribute
+* attribute
+* set_property
+* property
+
+-----------------------------------
+Methods is shape of init_[thing]();
+-----------------------------------
+This will automatically generate is_[thing]

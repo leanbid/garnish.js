@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script language="javascript" src="../../../garnish.js"></script>
+  <script>
+    garnish.extend('TestDialog', function(){
+      this.Dialog();
+      
+      this.container().build(function(){
+        this.div("This has been created using build()");
+        this.input({type: "button", value: "Close", garnish: function(){
+          this.click(function(){
+            this.dialog().close();
+          });
+        }});
+      });
+      
+    });
+  </script>
+</head>
+<body>
+  
+<a garnish="this.TestDialog(); this.click(function(){this.open();});">Open</a>
+
+<a garnish="this.Dialog().container().Ajax('test.php'); this.click(function(){this.open();});">Open Ajax Frame</a>
+  
+</body>
+</html>

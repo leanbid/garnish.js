@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script language="javascript" src="../../../garnish.js"></script>
+</head>
+<body>
+  
+<span id="test">
+
+</span>
+
+<script language="javascript">
+  var test_el = document.getElementById('test');
+  
+  garnish.wrap(test_el).build(function(){
+    this.table({border: 1, garnish: function(){this.fade_in()}}, function(){
+      this.tr(function(){
+        this.td("Test");
+      });
+    });
+  });
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+
+
+function brk(){
+  throw brk;
+}
