@@ -181,8 +181,6 @@
     this.def('post', post);
     this.def('put', put);
     this.def('target_iframe', target_iframe);
-    this.def('update_updateable', get);
-    
     
     if(is_defined(arguments[0])){
       this.set_url(arguments[0]);

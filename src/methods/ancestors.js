@@ -15,7 +15,7 @@ def('ancestors', function(){
     current = this.parent();
   }
   
-  while(current.element_list[0] != document.body){
+  while(current.element_list[0] != document){
     if(current.is(args.filter)){
       out.push(current.element_list[0]);
     }

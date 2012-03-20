@@ -7,8 +7,8 @@
     if(is_ready){
       return
     }
-    garnish.body = wrap(document.body);
-    garnish.body.descendants().init();
+    garnish.document = wrap(document);
+    garnish.document.descendants().init();
     is_ready = true;
   }
 
