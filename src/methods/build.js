@@ -18,7 +18,7 @@
       ]);
       
       var child_el = document.createElement(args.type);
-      var wrapped_child_el = wrap(child_el);
+      var wrapped_child_el = new ElementWrapper(child_el);
       
       for(var i in args.attributes){
         if(typeof args.attributes[i] == 'string'){
@@ -56,7 +56,7 @@
       var current_el = buffer_el.childNodes[0]
       this.element.appendChild(current_el);
       if(is_defined(current_el.attributes)){
-        wrap(current_el).descendants(true).init();
+        new ElementWrapper((current_el).descendants(true).init();
       }
     }
     this.ancestors().emit('content_updated');
