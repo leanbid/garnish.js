@@ -2,8 +2,8 @@
 function def(name, fn){
   
   function define_methods(name, fn){
-    ElementWrapper.prototype[name] = fn;
-    ElementListWrapper.prototype[name] = function(){
+    define_element_wrapper_method(name, fn);
+    define_element_list_wrapper_method(name, function(){
       var args = [];
       for(var i = 0; i < arguments.length; i++){
         args[i] = arguments[i];
@@ -13,7 +13,7 @@ function def(name, fn){
         out.push(fn.apply(this, args));
       });
       return out;
-    };
+    });
   }
   
   var matches;
