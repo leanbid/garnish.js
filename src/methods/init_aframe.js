@@ -154,7 +154,7 @@
       iframe_container.set_style('display', 'none');
       iframe_container.set_content("<iframe name='"+ this.shared_vars().target_iframe +"' onload=\"if(this.parentNode.iframe_onload){this.parentNode.iframe_onload(this);}\"></iframe>");
       var that = this;
-      iframe_container.element_list[0].iframe_onload = function(iframe){
+      iframe_container.element.iframe_onload = function(iframe){
         var html = iframe.contentDocument ? iframe.contentDocument.getElementsByTagName('body')[0].innerHTML : iframe.contentWindow.document.getElementsByTagName('body')[0].innerHTML;
         if(html != '' && is_defined(html)){
           setTimeout(function(){

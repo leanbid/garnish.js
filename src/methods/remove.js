@@ -8,7 +8,7 @@ def('remove', function(){
     this.ancestors(function(){
       this.emit('content_updated');
     });
-    this.element_list[0].parentNode.removeChild(this.element);
+    this.element.parentNode.removeChild(this.element);
   });
 });
 

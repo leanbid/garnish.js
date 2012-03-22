@@ -1,5 +1,5 @@
 
 def('type', function(){
-  return this.element_list[0].nodeName.toLowerCase();
+  return this.element.nodeName.toLowerCase();
 });
 

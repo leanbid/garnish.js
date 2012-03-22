@@ -7,11 +7,11 @@ def('value', function(){
         value = this.attribute('value');
       }
     } else {
-      value = this.element_list[0].value;
+      value = this.element.value;
     }
     return value;
   }
-  this.element_list[0].value = value;
+  this.element.value = value;
   return this;
 });
 

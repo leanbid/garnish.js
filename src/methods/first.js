@@ -1,5 +1,5 @@
 
 def('first', function(){
-  return wrap(this.element_list[0]);
+  return wrap(this.element);
 });
 

@@ -15,7 +15,7 @@ def('descendant', function(){
   var index = 0;
   
   var that = this;
-  var root = this.element_list[0];
+  var root = this.element;
   try {
     function traverse(el){
       if((args.include_this || el != root) && wrap(el).is(args.filter)){

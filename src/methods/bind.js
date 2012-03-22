@@ -7,10 +7,10 @@ def('bind', function(name, fn){
       fn.apply(that, arguments);
     }
     
-    if(is_defined(this.element_list[0].addEventListener)){
-      this.element_list[0].addEventListener(name, fn_wrapper, false);
-    } else if(is_defined(this.element_list[0].attachEvent)){
-      this.element_list[0].attachEvent("on" + name, fn_wrapper);
+    if(is_defined(this.element.addEventListener)){
+      this.element.addEventListener(name, fn_wrapper, false);
+    } else if(is_defined(this.element.attachEvent)){
+      this.element.attachEvent("on" + name, fn_wrapper);
     }
   });
   
