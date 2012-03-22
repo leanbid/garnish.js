@@ -1,18 +1,33 @@
 
-
 function def(name, fn){
+  
+  function define_methods(name, fn){
+    ElementWrapper.prototype[name] = fn;
+    ElementListWrapper.prototype[name] = function(){
+      var args = [];
+      for(var i = 0; i < arguments.length; i++){
+        args[i] = arguments[i];
+      }
+      var out = [];
+      this.each(function(){
+        out.push(fn.apply(this, args));
+      });
+      return out;
+    };
+  }
+  
   var matches;
   if(matches = name.match(/^init_([\w_]+)$/)){
     var object_name = matches[1];
-    ElementListWrapper.prototype[name] = function(){
+    define_methods(name, function(){
       this.shared_vars()['is_' + object_name] = true;
       return fn.apply(this, arguments);
-    };
-    ElementListWrapper.prototype['is_' + object_name] = function(){
+    });
+    define_methods('is_' + object_name, function(){
       return is_defined(this.shared_vars()['is_' + object_name]);
-    };
+    });
   } else {
-    ElementListWrapper.prototype[name] = fn;
+    define_methods(name, fn);
   }
 }
 
