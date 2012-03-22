@@ -1,5 +1,5 @@
 
 def('at', function(index){
-  return wrap(this.element_list[index]);
+  return new ElementWrapper(this.element_list[index]);
 });
 

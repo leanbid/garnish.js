@@ -15,13 +15,13 @@ def('ancestors', function(){
     current = this.parent();
   }
   
-  while(current.element_list[0] != document){
+  while(current.element != document){
     if(current.is(args.filter)){
-      out.push(current.element_list[0]);
+      out.push(current.element);
     }
     current = current.parent();
   }
   
-  return wrap(out);
+  return new ElementListWrapper(out);
 });
 

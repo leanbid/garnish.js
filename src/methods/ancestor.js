@@ -19,12 +19,12 @@ def('ancestor', function(){
     current = this.parent();
   }
   
-  var index = 0;
+  var out;
   
-  while(current.element_list[0] != document){
+  while(current.element != document){
     if(current.is(args.filter)){
       if(index == args.index){
-        out.push(current.element_list[0]);
+        out.push(current.element);
         break;
       }
       index++;
@@ -32,6 +32,6 @@ def('ancestor', function(){
     current = current.parent();
   }
   
-  return wrap(out);
+  return new ElementWrapper(out);
 });
 

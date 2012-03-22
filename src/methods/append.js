@@ -5,7 +5,7 @@ def('append', function(){
     type = arguments[0]
   }
   var element = document.createElement(type);
-  this.element_list[0].appendChild(element);
-  return wrap(element);
+  this.element.appendChild(element);
+  return new ElementWrapper(element);
 });
 
