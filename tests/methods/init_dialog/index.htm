@@ -3,8 +3,8 @@
 <head>
   <script language="javascript" src="../../../garnish.js"></script>
   <script>
-    garnish.extend('TestDialog', function(){
-      this.Dialog();
+    garnish.def('TestDialog', function(){
+      this.init_dialog();
       
       this.container().build(function(){
         this.div("This has been created using build()");
@@ -22,7 +22,7 @@
   
 <a garnish="this.TestDialog(); this.click(function(){this.open();});">Open</a>
 
-<a garnish="this.Dialog().container().Ajax('test.php'); this.click(function(){this.open();});">Open Ajax Frame</a>
+<a garnish="this.init_dialog().container().init_aframe('test.php'); this.click(function(){this.open();});">Open Ajax Frame</a>
   
 </body>
 </html>

@@ -1,8 +1,7 @@
 
 
 function page_metrics(){
-  var is_defined = is_defined;
-  
+
   if(document.body.scrollHeight > document.body.offsetHeight){ 
     width = document.body.scrollWidth;
     height = document.body.scrollHeight;
@@ -66,3 +65,5 @@ function page_metrics(){
     viewport_height: viewport_height
   };
 }
+
+garnish.page_metrics = page_metrics;

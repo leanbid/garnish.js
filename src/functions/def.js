@@ -15,3 +15,5 @@ function def(name, fn){
     ElementListWrapper.prototype[name] = fn;
   }
 }
+
+garnish.def = def;

@@ -1,5 +1,5 @@
 
-def('descendants', function(){
+def('descendant', function(){
   var args = map_args(arguments, {filter: "true", index: 0, include_this: false}, [
     [['string'], ['filter']],
     [['number'], ['index']],

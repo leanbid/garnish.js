@@ -5,7 +5,7 @@ def('init_dialog', function(){
   
   this.shared_vars().is_dialog = true;
   
-  var protection_layer = body.append('span');
+  var protection_layer = garnish.document.descendant("this.is_type('body')").append('span');
   protection_layer.set_styles({
     display: 'none',
     position: 'absolute',
@@ -13,10 +13,10 @@ def('init_dialog', function(){
     left: '0px',
     background: '#000'
   });
-  protection_layer.opacity(0);
+  protection_layer.set_opacity(0);
   
-  var dialog = body.append('span');
-  dialog.vars().parent = this;
+  var dialog = garnish.document.descendant("this.is_type('body')").append('span');
+  dialog.shared_vars().parent = this;
   dialog.set_styles({
     display: 'none',
     position: 'absolute'
@@ -26,28 +26,28 @@ def('init_dialog', function(){
     this.table({style: "empty-cells: show;", cellpadding: "0", cellspacing: "0"}, function(){
       this.tag('tbody', function(){
         this.tr(function(){
-          this.td({garnish: "this.opacity(30)", style: "height: 10px; width: 10px;"}, function(){
-            this.span({garnish: "this.bevel('5px 0px 0px 0px')", style :"float:left; display: inline-block; height: 10px; width: 10px; background: #000;"});
+          this.td({garnish: "this.set_opacity(30)", style: "height: 10px; width: 10px;"}, function(){
+            this.span({garnish: "this.set_bevel('5px 0px 0px 0px')", style :"float:left; display: inline-block; height: 10px; width: 10px; background: #000;"});
           });
-          this.td({garnish: "this.opacity(30)", style: "height: 10px; background: #000;"});
-          this.td({garnish: "this.opacity(30)", style: "height: 10px; width: 10px;"}, function(){
-            this.span({garnish: "this.bevel('0px 5px 0px 0px')", style :"float:left; display: inline-block; height: 10px; width: 10px; background: #000;"});
+          this.td({garnish: "this.set_opacity(30)", style: "height: 10px; background: #000;"});
+          this.td({garnish: "this.set_opacity(30)", style: "height: 10px; width: 10px;"}, function(){
+            this.span({garnish: "this.set_bevel('0px 5px 0px 0px')", style :"float:left; display: inline-block; height: 10px; width: 10px; background: #000;"});
           });
         });
         this.tr(function(){
-          this.td({garnish: "this.opacity(30)", style: "width: 10px; background: #000;"});
+          this.td({garnish: "this.set_opacity(30)", style: "width: 10px; background: #000;"});
           this.td(function(){
             this.span({garnish: function(){container = this;}, style: "padding: 5px; background: #fff; display: inline-block;"});
           });
-          this.td({garnish: "this.opacity(30)", style: "width: 10px; background: #000;"});
+          this.td({garnish: "this.set_opacity(30)", style: "width: 10px; background: #000;"});
         });
         this.tr(function(){
-          this.td({garnish: "this.opacity(30)", style: "height: 10px; width: 10px;"}, function(){
-            this.span({garnish: "this.bevel('0px 0px 0px 5px')", style :"float:left; display: inline-block; height: 10px; width: 10px; background: #000;"});
+          this.td({garnish: "this.set_opacity(30)", style: "height: 10px; width: 10px;"}, function(){
+            this.span({garnish: "this.set_bevel('0px 0px 0px 5px')", style :"float:left; display: inline-block; height: 10px; width: 10px; background: #000;"});
           });
-          this.td({garnish: "this.opacity(30)", style: "height: 10px; background: #000;"});
-          this.td({garnish: "this.opacity(30)", style: "height: 10px; width: 10px;"}, function(){
-            this.span({garnish: "this.bevel('0px 0px 5px 0px')", style :"float:left; display: inline-block; height: 10px; width: 10px; background: #000;"});
+          this.td({garnish: "this.set_opacity(30)", style: "height: 10px; background: #000;"});
+          this.td({garnish: "this.set_opacity(30)", style: "height: 10px; width: 10px;"}, function(){
+            this.span({garnish: "this.set_bevel('0px 0px 5px 0px')", style :"float:left; display: inline-block; height: 10px; width: 10px; background: #000;"});
           });
         });
       });
@@ -59,10 +59,10 @@ def('init_dialog', function(){
   });
   
   this.def('open', function(){
-    page_metrics = page_metrics();
+    var pm = page_metrics();
     protection_layer.set_styles({
-      width:  page_metrics.width + "px",
-      height: page_metrics.height + "px",
+      width:  pm.width + "px",
+      height: pm.height + "px",
       zIndex: top_zindex(),
       display: ''
     });
@@ -81,18 +81,18 @@ def('init_dialog', function(){
   });
   
   this.def('reposition_left', function(){
-    page_metrics = page_metrics();
-    dialog_metrics = dialog.metrics();
-    dialog_left = (page_metrics.width / 2) - (dialog_metrics.width / 2);
+    var pm = page_metrics();
+    var dialog_metrics = dialog.metrics();
+    var dialog_left = (pm.width / 2) - (dialog_metrics.width / 2);
     dialog.set_style('left', dialog_left + "px");
   });
   
  this.def('reposition_top', function(){
-    page_metrics = page_metrics();
-    dialog_metrics = dialog.metrics();
-    dialog_top = page_metrics.viewport_y + (page_metrics.viewport_height / 2) - (dialog_metrics.height / 2);
-    if(dialog_top < page_metrics.viewport_y + 10){
-      dialog_top = page_metrics.viewport_y + 10;
+    var pm = page_metrics();
+    var dialog_metrics = dialog.metrics();
+    var dialog_top = pm.viewport_y + (pm.viewport_height / 2) - (dialog_metrics.height / 2);
+    if(dialog_top < pm.viewport_y + 10){
+      dialog_top = pm.viewport_y + 10;
     }
     dialog.set_style('top', dialog_top + "px");
   });
