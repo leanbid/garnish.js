@@ -10,7 +10,7 @@ def('descendant', function(){
     [['string', 'number', 'boolean'], ['filter', 'index', 'include_this']]
   ]);
   
-  var out = [];
+  var out;
   
   var index = 0;
   
@@ -20,7 +20,7 @@ def('descendant', function(){
     function traverse(el){
       if((args.include_this || el != root) && wrap(el).is(args.filter)){
         if(index == args.index){
-          out.push(el);
+          out = new ElementWrapper(el);
           brk();
         }
         index++;
@@ -37,6 +37,6 @@ def('descendant', function(){
       throw e;
     }
   }
-  return wrap(out);
+  return out;
 });
 
