@@ -3,13 +3,12 @@ Functions
 -----------------------------------
 
 * is_defined
-* add_initializer(filter, fn)
+* add_initializer(fn)
 
 -----------------------------------
 Element Properties
 -----------------------------------
 
-* shared_vars
 * element
 
 -----------------------------------
@@ -30,11 +29,11 @@ Conditional:
 
 Traversal:
 * parent
-* (list) children(filter, fn)
-* (list) descendants(filter, fn)
-* (list) ancestors(filter, fn)
-* (list) all_next(filter, fn)
-* (list) all_previous(filter, fn)
+* children(filter, fn)
+* descendants(filter, fn)
+* ancestors(filter, fn)
+* all_next(filter, fn)
+* all_previous(filter, fn)
 * descendant(filter, offset, fn)
 * ancestor(filter, offset, fn)
 * next(filter, offset, fn)
@@ -54,6 +53,10 @@ Manipulation:
 * set_style
 
 Attributes
+* set_attribute
+* attribute
+* set_property
+* property
 * index
 * contents
 * style
@@ -66,35 +69,28 @@ Events
 * emit
 * listen
 
-Ajax / Util
+Util
 * xhr
+
+Widget / Widget Util
 * init_aframe
 * aframe
+* update_aframe
 * init_dialog
 * init_aframe_dialog
+* close_dialog
 
 
 -----------------------------------
-Element Wrapper List Methods
+Element Wrapper Array Methods
 -----------------------------------
-* offset
-* count
+
 * first
 * last
 * each
 * filter
-* concat(list)
-* reverse
 
 -----------------------------------
-Methods to get rid of? 
+Methods is shape of init_[widget]();
 -----------------------------------
-* set_attribute
-* attribute
-* set_property
-* property
-
------------------------------------
-Methods is shape of init_[thing]();
------------------------------------
-This will automatically generate is_[thing]
+This will automatically generate is_[widget]
