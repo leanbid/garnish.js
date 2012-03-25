@@ -2,19 +2,19 @@
 (function(){
   
   function url(){
-    return this.shared_vars().url;
+    return this._url;
   }
   
   function set_url(url){
-    this.shared_vars().url = url;
+    this._url = url;
   }
   
   function url_path(){
-    return this.shared_vars().url.replace(/\?(.*)$/, "");
+    return this._url.replace(/\?(.*)$/, "");
   }
 
   function url_vars(){
-    return deserialize(this.shared_vars().url.replace(/^(.*)\?/, ""));
+    return deserialize(this._url.replace(/^(.*)\?/, ""));
   }
   
   function set_url_vars(vars){
@@ -54,7 +54,7 @@
     }
     
     var that = this;
-    this.shared_vars().xhr.send('get', this.url(), {}, function(data){
+    this._xhr.send('get', this.url(), {}, function(data){
       if(is_defined(args.fn)){
         data = args.fn.call(that, data);
       }
@@ -87,7 +87,7 @@
     }
     
     var that = this;
-    this.shared_vars().xhr.send('delete', this.url(), {}, function(data){
+    this._xhr.send('delete', this.url(), {}, function(data){
       if(is_defined(args.fn)){
         data = args.fn.call(that, data);
       }
@@ -110,7 +110,7 @@
     this.set_url(args.url);
     
     var that = this;
-    this.shared_vars().xhr.send('post', this.url(), args.vars, function(data){
+    this._xhr.send('post', this.url(), args.vars, function(data){
       if(is_defined(args.fn)){
         data = args.fn.call(that, data);
       }
@@ -134,7 +134,7 @@
     this.set_url(args.url);
     
     var that = this;
-    this.shared_vars().xhr.send('put', this.url(), args.vars, function(data){
+    this._xhr.send('put', this.url(), args.vars, function(data){
       if(is_defined(args.fn)){
         data = args.fn.call(that, data);
       }
@@ -147,12 +147,12 @@
   var counter = 0;
   
   function target_iframe(){
-    if(!is_defined(this.shared_vars().target_iframe)){
-      this.shared_vars().target_iframe = "iframe_" + counter;
+    if(!is_defined(this._target_iframe)){
+      this._target_iframe = "iframe_" + counter;
       counter++;
       var iframe_container = this.append();
       iframe_container.set_style('display', 'none');
-      iframe_container.set_content("<iframe name='"+ this.shared_vars().target_iframe +"' onload=\"if(this.parentNode.iframe_onload){this.parentNode.iframe_onload(this);}\"></iframe>");
+      iframe_container.set_content("<iframe name='"+ this._target_iframe +"' onload=\"if(this.parentNode.iframe_onload){this.parentNode.iframe_onload(this);}\"></iframe>");
       var that = this;
       iframe_container.element.iframe_onload = function(iframe){
         var html = iframe.contentDocument ? iframe.contentDocument.getElementsByTagName('body')[0].innerHTML : iframe.contentWindow.document.getElementsByTagName('body')[0].innerHTML;
@@ -163,13 +163,13 @@
         }
       };
     }
-    return this.shared_vars().target_iframe;
+    return this._target_iframe;
   }
   
   def('init_aframe', function(){
-    this.shared_vars().is_ajax = true;
+    this._is_aframe = true;
     
-    this.shared_vars().xhr = this.xhr();
+    this._xhr = this.xhr();
     this.def('url', url);
     this.def('set_url', set_url);
     this.def('url_path', url_path);

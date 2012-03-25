@@ -1,14 +1,12 @@
 
 def('listen', function(name, fn){
-  var shared_vars = this.shared_vars();
-  if(!is_defined(shared_vars.slots)){
-    shared_vars.slots = {};
+  if(!is_defined(this._slots)){
+    this._slots = {};
   }
-  var slots = shared_vars.slots;
-  if(!is_defined(slots[name])){
-   slots[name] = [];
+  if(!is_defined(this._slots[name])){
+   this._slots[name] = [];
   }
-  slots[name].push(fn);
+  this._slots[name].push(fn);
   return this;
 });
 

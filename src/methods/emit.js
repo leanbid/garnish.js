@@ -5,15 +5,13 @@ def('emit', function(name){
     args.push(arguments[i]);
   }
   
-  var shared_vars = this.shared_vars();
-  if(!is_defined(shared_vars.slots)){
-    shared_vars.slots = {};
+  if(!is_defined(this._slots)){
+    this._slots = {};
   }
-  var slots = shared_vars.slots;
-  if(!is_defined(slots[name])){
-   slots[name] = [];
+  if(!is_defined(this._slots[name])){
+   this._slots[name] = [];
   }
-  var fn_list = slots[name];
+  var fn_list = this._slots[name];
   for(var i in fn_list){
     fn_list[i].apply(this, args);
   }

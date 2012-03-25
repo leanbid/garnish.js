@@ -20,11 +20,11 @@ function def(name, fn){
   if(matches = name.match(/^init_([\w_]+)$/)){
     var object_name = matches[1];
     define_methods(name, function(){
-      this.shared_vars()['is_' + object_name] = true;
+      this['_is_' + object_name] = true;
       return fn.apply(this, arguments);
     });
     define_methods('is_' + object_name, function(){
-      return is_defined(this.shared_vars()['is_' + object_name]);
+      return is_defined(this['_is_' + object_name]);
     });
   } else {
     define_methods(name, fn);

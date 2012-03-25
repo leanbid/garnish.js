@@ -3,7 +3,7 @@ def('init_dialog', function(){
   var fn = arguments[0]
   var container;
   
-  this.shared_vars().is_dialog = true;
+  this._is_dialog = true;
   
   var protection_layer = garnish.document.descendant("this.is_type('body')").append('span');
   protection_layer.set_styles({
@@ -16,7 +16,7 @@ def('init_dialog', function(){
   protection_layer.set_opacity(0);
   
   var dialog = garnish.document.descendant("this.is_type('body')").append('span');
-  dialog.shared_vars().parent = this;
+  dialog._parent = this;
   dialog.set_styles({
     display: 'none',
     position: 'absolute'
