@@ -20,6 +20,16 @@
     });
   });
   
+  garnish.wrap(test_el).build_before(function(){
+    this.h1("Before");
+    this.hr();
+  });
+  
+  garnish.wrap(test_el).build_after(function(){
+    this.hr();
+    this.h1("After");
+  });
+  
 </script>
 
 </body>
