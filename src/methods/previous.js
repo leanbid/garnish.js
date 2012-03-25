@@ -5,5 +5,5 @@ def('next', function(){
     [['number'], ['index']],
     [['string', 'number'], ['filter', 'index']]
   ]);
-  return this.all_next(args.filter)[args.index];
+  return this.all_previous(args.filter)[args.index];
 });

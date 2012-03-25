@@ -68,6 +68,7 @@ Events
 * bind
 * emit
 * listen
+* click
 
 Util
 * xhr

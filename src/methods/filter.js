@@ -1,5 +1,5 @@
 
-def('filter', function(condition){
+ElementWrapperArray.prototype['filter'] = function(condition){
   var out = new ElementWrapperArray();
   this.each(function(){
     if(this.is(condition)){
@@ -7,5 +7,5 @@ def('filter', function(condition){
     }
   });
   return out;
-});
+};
 
