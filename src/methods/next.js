@@ -5,7 +5,6 @@ def('next', function(){
     [['function'], ['fn']]
   ]);
   
-  var siblings = this.parent.siblings();
-  
-  
+  var siblings = this.parent().children();
+  return siblings[this.index() + 1];
 });

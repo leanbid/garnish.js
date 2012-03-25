@@ -1,5 +1,6 @@
 
-def('last', function(){
-  return wrap(this.element_list[element_list.length - 1]);
-});
+
+ElementWrapperArray.prototype['last'] = function(){
+  return this[this.length - 1];
+};
 

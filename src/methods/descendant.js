@@ -20,7 +20,7 @@ def('descendant', function(){
     function traverse(el){
       if((args.include_this || el != root) && wrap(el).is(args.filter)){
         if(index == args.index){
-          out = new ElementWrapper(el);
+          out = wrap(el);
           brk();
         }
         index++;

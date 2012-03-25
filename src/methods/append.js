@@ -6,6 +6,6 @@ def('append', function(){
   }
   var element = document.createElement(type);
   this.element.appendChild(element);
-  return new ElementWrapper(element);
+  return wrap(element);
 });
 

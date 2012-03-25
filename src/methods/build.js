@@ -56,7 +56,7 @@
       var current_el = buffer_el.childNodes[0]
       this.element.appendChild(current_el);
       if(is_defined(current_el.attributes)){
-        new ElementWrapper((current_el).descendants(true).init();
+        wrap(current_el).descendants(true).init();
       }
     }
     this.ancestors().emit('content_updated');

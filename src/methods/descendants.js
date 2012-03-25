@@ -6,13 +6,13 @@ def('descendants', function(){
     [['string', 'boolean'], ['filter', 'include_this']]
   ]);
   
-  var out = [];
+  var out = new ElementWrapperArray();
   
   var that = this;
   var root = this.element;
   function traverse(el){
     if((args.include_this || el != root) && wrap(el).is(args.filter)){
-      out.push(el);
+      out.push(wrap(el));
     }
     for(var i = 0; i < el.childNodes.length; i++){
       if(is_defined(el.childNodes[i].attributes)){
@@ -21,6 +21,6 @@ def('descendants', function(){
     }
   }
   traverse(root);
-  return wrap(out);
+  return out;
 });
 

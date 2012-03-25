@@ -1,12 +1,12 @@
 
-define_element_list_wrapper_method('ancestors', function(){
+def('ancestors', function(){
   var args = map_args(arguments, {filter: "true", include_this: false}, [
     [['string'], ['filter']],
     [['boolean'], ['include_this']],
     [['string', 'boolean'], ['filter', 'include_this']]
   ]);
   
-  var out = [];
+  var out = new ElementWrapperArray();
   
   var current;
   if(args.include_this){
@@ -17,11 +17,11 @@ define_element_list_wrapper_method('ancestors', function(){
   
   while(current.element != document){
     if(current.is(args.filter)){
-      out.push(current.element);
+      out.push(current);
     }
     current = current.parent();
   }
   
-  return new ElementListWrapper(out);
+  return out;
 });
 

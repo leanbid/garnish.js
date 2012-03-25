@@ -1,8 +1,8 @@
 
-def('each', function(fn){
+ElementWrapperArray.prototype['each'] = function(fn){
   try {
-    for(var i in this.element_list){
-      fn.call(wrap(this.element_list[i]));
+    for(var i = 0; i < this.length; i++){
+      fn.call(this[i]);
     }
   } catch(e){
     if(e != brk){
@@ -10,5 +10,4 @@ def('each', function(fn){
     }
   }
   return this;
-});
-
+};

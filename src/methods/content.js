@@ -1,5 +1,5 @@
 
-def('content', function(arg1){
+def('content', function(){
   return this.element.innerHTML;
 });
 

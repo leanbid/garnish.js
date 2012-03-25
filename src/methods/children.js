@@ -4,14 +4,14 @@ def('children', function(){
     [['string'], ['filter']]
   ]);
   
-  var out = [];
+  var out = new ElementWrapperList();
   
   for(var i = 0; i < el.childNodes.length; i++){
     if(is_defined(el.childNodes[i].attributes) && new ElementWrapper(el.childNodes[i]).is(args.filter)){
-     out.push(el);
+     out.push(wrap(el));
     }
   }
   
-  return new ElementListWrapper(out);
+  return out;
 });
 

@@ -10,8 +10,6 @@ def('ancestor', function(){
     [['string', 'number', 'boolean'], ['filter', 'index', 'include_this']]
   ]);
   
-  var out = [];
-  
   var current;
   if(args.include_this){
     current = this;
@@ -24,7 +22,7 @@ def('ancestor', function(){
   while(current.element != document){
     if(current.is(args.filter)){
       if(index == args.index){
-        out.push(current.element);
+        out = current;
         break;
       }
       index++;
@@ -32,6 +30,6 @@ def('ancestor', function(){
     current = current.parent();
   }
   
-  return new ElementWrapper(out);
+  return out;
 });
 

@@ -1,5 +1,6 @@
 
-def('first', function(){
-  return wrap(this.element);
-});
+ElementWrapperArray.prototype['first'] = function(){
+  return this[0];
+};
+
 

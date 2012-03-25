@@ -18,7 +18,7 @@ task :build do
   buf.push File.new(CURRENT_DIR + "src/core.js", "r").collect {|line| line}.join
   Dir::open(CURRENT_DIR + "src/methods/").each do |name|
     if name.match(/\.js\Z/)
-      buf.push File.new(CURRENT_DIR + "src/methods/#{name}", "r").collect {|line| line}.join
+     buf.push File.new(CURRENT_DIR + "src/methods/#{name}", "r").collect {|line| line}.join
     end
   end
   Dir::open(CURRENT_DIR + "src/initializers/").each do |name|
