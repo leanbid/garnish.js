@@ -2,7 +2,7 @@
 Functions
 -----------------------------------
 
-* is_defined
+* is_defined 
 * add_initializer(fn)
 
 -----------------------------------
@@ -51,6 +51,8 @@ Manipulation:
 * set_contents
 * add_class
 * set_style
+* show
+* hide
 
 Attributes
 * set_attribute
