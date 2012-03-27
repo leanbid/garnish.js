@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script language="javascript" src="../../garnish.js"></script>
+  
+  <script language="javascript">
+    garnish.def('init_todo_list', function(){
+      this.build(function(){
+        this.table(function(){
+            this.tr(function(){
+                this.td(function(){
+                  this.a({garnish: function(){
+                    var add_link = this;
+                    this.init_dialog();
+                    this.container().build(function(){
+                      this.div(function(){
+                        this.b("Add Item");
+                      });
+                      this.input({type: "text"});
+                      this.div({align: "center"}, function(){
+                        this.input({type: "button", value: "Add", garnish: function(){
+                          this.click(function(){
+                            var input = this.ancestor(1).descendant("this.is_type('input')");
+                            add_link.build_before(function(){
+                              this.tr(function(){
+                                this.td(input.value());
+                              });
+                            });
+                            this.dialog().close();
+                            //input.set_value('');
+                          });
+                        }});
+                        this.input({type: "button", value: "Close", garnish: "this.click(function(){this.dialog().close();})"});
+                      });
+                    });
+                    this.click(function(){
+                      this.open();
+                    });
+                  }}, "Add");
+                });
+            });
+        });
+      });
+      
+    });
+  </script>
+  
+</head>
+<body>
+
+
+<div garnish="this.init_todo_list();"></div>
+
+</body>
+</html>
