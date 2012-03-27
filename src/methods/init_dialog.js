@@ -13,7 +13,7 @@ def('init_dialog', function(){
     left: '0px',
     background: '#000'
   });
-  protection_layer.set_opacity(0);
+  protection_layer.set_opacity(20);
   
   var dialog = garnish.document.descendant("this.is_type('body')").append('span');
   dialog._parent = this;
@@ -102,11 +102,22 @@ def('init_dialog', function(){
     this.reposition_top();
   });
   
+  var active_xhr_counter = 0;
+  this.listen('active_xhr', function(){ active_xhr_counter++; });
+  this.listen('inactive_xhr', function(){ active_xhr_counter--; });
+
   var init_content = false;
+  
   this.listen('content_updated', function(){
     if(!init_content){
-      this.reposition();
-      init_content = true;
+      var that = this;
+      var interval = window.setInterval(function(){
+        that.reposition();
+        if(active_xhr_counter == 0){
+          init_content = true;
+          window.clearInterval(interval);
+        }
+      }, 10);
     } else {
       this.reposition_left();
     }

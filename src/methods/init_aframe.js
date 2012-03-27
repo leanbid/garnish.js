@@ -167,6 +167,12 @@
   }
   
   def('init_aframe', function(){
+    var args = map_args(arguments, {url: window.location.href, load: (this.is_type('span') || this.is_type('div')) && this.content() == ''}, [
+      [['string'], ['url']],
+      [['boolean'], ['load']],
+      [['string', 'boolean'], ['url', 'load']]
+    ]);
+    
     this._is_aframe = true;
     
     this._xhr = this.xhr();
@@ -182,13 +188,9 @@
     this.def('put', put);
     this.def('target_iframe', target_iframe);
     
-    if(is_defined(arguments[0])){
-      this.set_url(arguments[0]);
-    } else {
-      this.set_url(window.location.href);
-    }
-    
-    if(is_defined(arguments[0]) && (this.is_type('span') || this.is_type('div')) && this.content() == ''){
+    this.set_url(args.url)
+
+    if(args.load){
       this.get();
     }
     
@@ -196,3 +198,4 @@
   });
 
 })();
+

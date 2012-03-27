@@ -1,3 +1,4 @@
+
 <div>
 <p>This is inside an ajax_frame</p>
 

@@ -5,7 +5,7 @@ add_initializer(function(){
   }
   
   var aframe = this.aframe();
-  if(!garnish.is_defined(aframe)){
+  if(!is_defined(aframe)){
     return;
   }
   
@@ -13,13 +13,7 @@ add_initializer(function(){
     this.set_attribute('action', aframe.url());
   }
   
-  var is_file_input = false;
-  this.descendants(function(){
-    if(this.is_type('input') && this.attribute('type') == 'file'){
-      is_file_input = true;
-      garnish.brk();
-    }
-  });
+  var is_file_input = this.descendants("this.is_type('input') && this.attribute('type') == 'file'").length > 0;
   
   if(is_file_input){
     this.set_attribute('method', 'post');

@@ -18,6 +18,7 @@ def('ancestor', function(){
   }
   
   var out;
+  var index = 0;
   
   while(current.element != document){
     if(current.is(args.filter)){
