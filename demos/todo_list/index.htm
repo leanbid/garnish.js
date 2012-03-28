@@ -23,7 +23,7 @@
                             var input = this.ancestor(1).descendant("this.is_type('input')");
                             add_link.build_before(function(){
                               this.tr(function(){
-                                this.td(input.value());
+                                this.td({garnish: "this.fade_in();"}, input.value());
                               });
                             });
                             this.dialog().close();
