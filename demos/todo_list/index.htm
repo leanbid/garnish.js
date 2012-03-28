@@ -5,41 +5,47 @@
   
   <script language="javascript">
     garnish.def('init_todo_list', function(){
-      this.build(function(){
-        this.table(function(){
-            this.tr(function(){
-                this.td(function(){
-                  this.a({garnish: function(){
-                    var add_link = this;
-                    this.init_dialog();
-                    this.container().build(function(){
-                      this.div(function(){
-                        this.b("Add Item");
-                      });
-                      this.input({type: "text"});
-                      this.div({align: "center"}, function(){
-                        this.input({type: "button", value: "Add", garnish: function(){
-                          this.click(function(){
-                            var input = this.ancestor(1).descendant("this.is_type('input')");
-                            add_link.build_before(function(){
-                              this.tr(function(){
-                                this.td({garnish: "this.fade_in();"}, input.value());
-                              });
-                            });
-                            this.dialog().close();
-                            //input.set_value('');
-                          });
-                        }});
-                        this.input({type: "button", value: "Close", garnish: "this.click(function(){this.dialog().close();})"});
-                      });
-                    });
-                    this.click(function(){
-                      this.open();
-                    });
-                  }}, "Add");
-                });
-            });
+      
+      var list;
+      
+      function add_item(value){
+        list.build(function(){
+          this.li({garnish: "this.fade_in();"}, value);
         });
+      }
+      
+      function dialog_tpl(){
+        this.div(function(){
+          this.b("Add Item");
+        });
+        this.input({type: "text"});
+        this.div({align: "center"}, function(){
+          this.input({type: "button", value: "Add", garnish: function(){
+            this.click(function(){
+              var input = this.ancestor(1).descendant("this.is_type('input')");
+              if(input.value().replace(/^\s+\$/, "") == ""){
+                alert("Can't be empty");
+              } else {
+                add_item(input.value());
+                this.dialog().close();
+                input.set_value('');
+              }
+            });
+          }});
+          this.input({type: "button", value: "Close", garnish: "this.click(function(){this.dialog().close();})"});
+        });
+      }
+      
+      this.build(function(){
+        this.ul({garnish: function(){list = this;}}, function(){});
+        this.a({garnish: function(){
+          add_link = this;
+          this.init_dialog();
+          this.container().build(dialog_tpl);
+          this.click(function(){
+            this.open();
+          });
+        }}, "Add");
       });
       
     });
