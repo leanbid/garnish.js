@@ -5,7 +5,7 @@ add_initializer(function(){
   }
   
   var href = this.attribute('href');
-  if(!is_defined(href)){
+  if(!is_defined(href) || href.match(/^javascript:/)){
     return;
   }
   
