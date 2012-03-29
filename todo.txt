@@ -8,3 +8,4 @@
 * only enable submit if form values change
 * make sure dialog protection layer always takes full screen
 * make sure dialogs are always on the top level - perhaps start zindex at 1000000
+* if link is a mailto do not rewire
