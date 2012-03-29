@@ -1,0 +1,5 @@
+
+* perhaps aframes should look at anchor tag targets e.g. _blank, _parent etc...
+  * This could be used to stop the rewiring of links.
+  * Perhaps same for forms.
+
