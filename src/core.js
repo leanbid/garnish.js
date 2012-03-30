@@ -55,3 +55,29 @@ function DomBuilder(el, child_builder_fn){
   
   child_builder_fn.call(this);
 }
+
+
+function Interval(_time, _this, fn){
+  var interval;
+  this.start = function(){
+    interval = window.setInterval(function(){
+      fn.call(_this);
+    }, time);
+  };
+  
+  this.stop = function(){
+    if(is_defined(interval)){
+      window.clearInterval(interval);
+      interval = null;
+    }
+  }
+  
+}
+
+
+
+
+
+
+
+

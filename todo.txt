@@ -1,6 +1,5 @@
 
 * create poll_values method
-* create interval class
 * create interval method
 * replace old setInterval code with new interval method
 * Make sure xhr sends CSRF token.
