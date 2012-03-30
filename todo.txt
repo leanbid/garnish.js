@@ -1,6 +1,5 @@
 
 * create poll_values method
-* create interval method
 * replace old setInterval code with new interval method
 * Make sure xhr sends CSRF token.
 * only enable submit if form values change
