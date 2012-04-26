@@ -5,3 +5,5 @@ function is_defined(value){
   }
   return false;
 }
+
+garnish.is_defined = is_defined;

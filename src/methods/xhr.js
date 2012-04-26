@@ -1,6 +1,7 @@
 
 
 (function(){
+  
   function Xhr(){
     var args = map_args(arguments, {observer_fn: function(){}}, [
       [['function'], ['observer_fn']]
@@ -32,6 +33,11 @@
       xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-8");
       xhr.setRequestHeader("Content-length", data.length);
       xhr.setRequestHeader("Connection", "close");
+      
+      garnish.document.descendants("this.is_type('meta') && this.attribute('name') == 'csrf-token'").each(function(){
+        xhr.setRequestHeader("X-CSRF-Token", this.attribute('content'));
+      });
+      
       xhr.onreadystatechange = function(data){
         if(xhr.readyState == 4){
           if(xhr.status == 200){
