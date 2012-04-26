@@ -23,3 +23,5 @@ function flatten(data){
   
   return out;
 }
+
+garnish.flatten = flatten;
