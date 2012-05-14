@@ -4,5 +4,5 @@ def('all_next', function(){
     [['string'], ['filter']]
   ]);
 
-  this.parent().children().slice(this.index() + 1).filter(args.filter);
+  return this.parent().children().slice(this.index() + 1).filter(args.filter);
 });

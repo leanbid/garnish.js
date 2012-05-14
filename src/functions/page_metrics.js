@@ -1,16 +1,31 @@
 
+var width_el;
 
 function page_metrics(){
+  
+  if(!is_defined(width_el)){
+    width_el = garnish.document.descendant("this.is_type('body')").append('div');
+    width_el.set_styles({
+      position: 'absolute',
+      top: '-1px',
+      left: '0px',
+      margin: '0px;',
+      width: '100%',
+      height: '1px'
+    });
+  }
+  
+  var width = width_el.metrics().width;
+  
+  //http://www.w3schools.com/jsref/dom_obj_all.asp
+  
+  var height = Math.max(
+      Math.max(document.body.scrollHeight, document.documentElement.scrollHeight),
+      Math.max(document.body.offsetHeight, document.documentElement.offsetHeight),
+      Math.max(document.body.clientHeight, document.documentElement.clientHeight)
+  );
+  
 
-  if(document.body.scrollHeight > document.body.offsetHeight){ 
-    width = document.body.scrollWidth;
-    height = document.body.scrollHeight;
-  } else { 
-    width = document.body.offsetWidth;
-    height = document.body.offsetHeight;
-  } 
-  
-  
   var viewport_x = 0;
   if(is_defined(window.pageXOffset)){
     viewport_x = window.pageXOffset;
@@ -20,14 +35,12 @@ function page_metrics(){
     viewport_x = document.body.scrollLeft
   }
   
-  
   var viewport_y = 0;
   if(is_defined(window.pageYOffset)){
     viewport_y = window.pageYOffset;
   } else if(is_defined(document.documentElement.scrollTop)){
     viewport_y = document.documentElement.scrollTop;
   } else {
-    //document.documentel.scrollTop?
     viewport_y = document.body.scrollTop
   }
 
@@ -47,6 +60,8 @@ function page_metrics(){
   if(is_defined(window.innerHeight) && window.innerHeight < viewport_height){
     viewport_height = window.innerHeight
   }
+  
+  
 
   if(width < viewport_width){
     width = viewport_width;

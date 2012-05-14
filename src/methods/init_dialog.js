@@ -15,6 +15,15 @@ def('init_dialog', function(){
   });
   protection_layer.set_opacity(20);
   
+  var window_observer = this.interval(100, function(){
+    var pm = page_metrics();
+    protection_layer.set_styles({
+      width:  pm.width + "px",
+      height: pm.height + "px"
+    });
+  });
+  
+  
   var dialog = garnish.document.descendant("this.is_type('body')").append('span');
   dialog._parent = this;
   dialog.set_styles({
@@ -59,13 +68,12 @@ def('init_dialog', function(){
   });
   
   this.def('open', function(){
-    var pm = page_metrics();
+    window_observer.start();
     protection_layer.set_styles({
-      width:  pm.width + "px",
-      height: pm.height + "px",
       zIndex: top_zindex(),
       display: ''
     });
+    
     dialog.fade_in();
     dialog.set_styles({
       zIndex: top_zindex(),
@@ -76,6 +84,7 @@ def('init_dialog', function(){
   });
   
   this.def('close', function(){
+    window_observer.stop();
     protection_layer.set_style('display', 'none');
     dialog.set_style('display', 'none');
   });
@@ -110,14 +119,13 @@ def('init_dialog', function(){
   
   this.listen('content_updated', function(){
     if(!init_content){
-      var that = this;
-      var interval = window.setInterval(function(){
-        that.reposition();
+      var interval = this.interval(10, function(){
+        this.reposition();
         if(active_xhr_counter == 0){
           init_content = true;
-          window.clearInterval(interval);
+          interval.stop();
         }
-      }, 10);
+      }).start();
     } else {
       this.reposition_left();
     }

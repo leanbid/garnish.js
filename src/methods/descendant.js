@@ -18,9 +18,10 @@ def('descendant', function(){
   var root = this.element;
   try {
     function traverse(el){
-      if((args.include_this || el != root) && wrap(el).is(args.filter)){
+      var wrapped_el = wrap(el);
+      if((args.include_this || el != root) && wrapped_el.is(args.filter)){
         if(index == args.index){
-          out = wrap(el);
+          out = wrapped_el;
           brk();
         }
         index++;

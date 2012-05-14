@@ -11,8 +11,9 @@ def('descendants', function(){
   var that = this;
   var root = this.element;
   function traverse(el){
-    if((args.include_this || el != root) && wrap(el).is(args.filter)){
-      out.push(wrap(el));
+    var wrapped_el = wrap(el);
+    if((args.include_this || el != root) && wrapped_el.is(args.filter)){
+      out.push(wrapped_el);
     }
     for(var i = 0; i < el.childNodes.length; i++){
       if(is_defined(el.childNodes[i].attributes)){

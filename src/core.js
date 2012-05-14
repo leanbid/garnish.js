@@ -57,12 +57,13 @@ function DomBuilder(el, child_builder_fn){
 }
 
 
-function Interval(_time, _this, fn){
+function Interval(time, _this, fn){
   var interval;
   this.start = function(){
     interval = window.setInterval(function(){
       fn.call(_this);
     }, time);
+    return this;
   };
   
   this.stop = function(){
@@ -70,8 +71,8 @@ function Interval(_time, _this, fn){
       window.clearInterval(interval);
       interval = null;
     }
+    return this;
   }
-  
 }
 
 

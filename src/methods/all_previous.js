@@ -4,5 +4,5 @@ def('all_previous', function(){
     [['string'], ['filter']]
   ]);
 
-  this.parent().children().slice(0, this.index()).filter(args.filter).reverse();
+  return this.parent().children().slice(0, this.index()).filter(args.filter).reverse();
 });
