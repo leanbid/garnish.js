@@ -1,3 +1,6 @@
 garnish.js
 garnish.min.js
 Gemfile.lock
+site/_site/*
+site/javascripts/garnish.js
+site/javascripts/garnish.min.js

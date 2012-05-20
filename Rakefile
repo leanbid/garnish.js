@@ -29,6 +29,7 @@ task :build do
   buf.push File.new(CURRENT_DIR + "src/bootstrap.js", "r").collect {|line| line}.join
   buf.push "\n})()\n"
   
+  
   f = File.new(CURRENT_DIR + "garnish.js", "w")
   f.write buf.join("\n")
   f.close
@@ -36,6 +37,16 @@ task :build do
   f = File.new(CURRENT_DIR + "garnish.min.js", "w")
   f.write Uglifier.new.compile(buf.join("\n"))
   f.close
+  
+  
+  f = File.new(CURRENT_DIR + "site/javascripts/garnish.js", "w")
+  f.write buf.join("\n")
+  f.close
+  
+  f = File.new(CURRENT_DIR + "site/javascripts/garnish.min.js", "w")
+  f.write Uglifier.new.compile(buf.join("\n"))
+  f.close
+  
   
 end
 

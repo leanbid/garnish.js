@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% if page.title %}
+      <title>{{ page.title }} - garnish.js</title>
+    {% else %}
+      <title>garnish.js</title>
+    {% endif %}
+    <link rel="stylesheet" href="/stylesheets/pygments.css">
+    <script src="/javascripts/garnish.js"></script>
+  </head>
+  <body>
+   {{content}}
+  </body>
+</html>
