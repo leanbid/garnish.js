@@ -1,5 +1,5 @@
 
-def('next', function(){
+def('previous', function(){
   var args = map_args(arguments, {filter: "true", index: 0}, [
     [['string'], ['filter']],
     [['number'], ['index']],
