@@ -5,7 +5,6 @@ def('hide', function(fn){
     this._display = this.style('display');
   }
   this._is_hidden = true;
-  this._display = this.style('display');
   this.set_style('display', 'none');
   return this;
 });
